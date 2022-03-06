@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit "{{ grades['name'] }}" </title>
+</head>
+
+<body>
+
+<header>
+<h1>Edit "{{ grades['name'] }}"</header>
+</header>
+
+<form method="post">
+
+        <label for="name">Name</label>
+        <input name="name" id="name" value = "{{ request.form['name'] or grades['name'] }}" required>
+
+        <label for="points">Points</label>
+        <input name="points" id="points" value = "{{ request.form['points'] or grades['body'] }}" required>
+
+        <input type="submit" value="Save">
+</form>
+<hr>
+<form action="{{ url_for('grades.delete', id=grades['id']) }}" method="post">
+    	<input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+</form>
+
+</body>
+</html>

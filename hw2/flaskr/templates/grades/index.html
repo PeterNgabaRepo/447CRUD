@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student</title>
+</head>
+
+<body>
+
+<a class="action" href="{{ url_for('grades.create') }}">Add</a>
+
+<table>
+<caption> Student </caption>
+<tr>
+	<th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Points</th>
+</tr>
+
+{% for grade in grades %}	
+	<tr>
+	    <th scope="row"> {{grade['id']}} </td>
+	    <td> {{grade['name']}} </td>
+	    <td> {{grade['points']}} </td>
+	    <td> <a class="action" href="{{ url_for('grades.update', id=grade['id']) }}">Edit</a> </td>
+            {{grade|safe }}
+	</tr>
+        <br>
+{% endfor %}
+</table>
+</body>
+</html>
